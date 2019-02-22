@@ -17,6 +17,8 @@ Edit the [`deck.mdx`](deck.mdx) file to get started.
 
 To build the presentation deck as static HTML:
 
+NOTE: You have to make the changes described [here](https://github.com/pomber/code-surfer/issues/8#issuecomment-422095168) and [here](https://github.com/pomber/code-surfer/issues/8#issuecomment-430580725) for it to build properly with codesurfer.
+
 ```sh
 npm run build
 ```
