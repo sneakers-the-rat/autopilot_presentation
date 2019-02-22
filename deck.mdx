@@ -1,0 +1,172 @@
+import { Head, Appear } from 'mdx-deck'
+import MDXStyle from 'mdx-style'
+
+
+import nightOwl from "prism-react-renderer/themes/nightOwl"
+
+import { CodeSurfer } from "mdx-deck-code-surfer"
+
+import { withDeck } from 'mdx-deck'
+
+export { default as theme } from './future'
+
+
+
+<Head>
+  <title>RPilot</title>
+  <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Staatliches" rel="stylesheet"/>
+</Head>
+
+# RPilot
+
+Distributed Behavior
+
+---
+
+# In Brief
+
+<img width="800" height="575" src="./images/1_overview_1.svg"/>
+
+---
+
+
+# In Brief
+
+<img width="800" height="575" src="./images/1_overview_2.svg"/>
+---
+
+# In Brief
+
+<img width="800" height="575" src="./images/1_overview_3.svg"/>
+
+---
+
+# In Brief
+
+* Rpilot is the most flexible, inexpensive behavioral system with no loss of performance.
+
+---
+
+# Why do we need an rpilot
+
+* passive presentation won't get us answers, we need animals to be engaged - either to study the active brain or to provide some output readout. We all know we need behavior
+* most behavior experiments are run by in-house code, that's disastrous for reproducibility and transparency.
+* most labs can't afford development time for hardware/software, and so are left w/ stuff that works pretty badly.
+* current solutions are ridiculously expensive, which is bad for scientific equity and access
+* also, systems neuro is begging for a replication crisis with n=3, so expense is a concrete problem for science.
+
+---
+
+# What is a behavioral system?
+
+* hardware
+* optionally stimuli
+* task design
+* data storage and management
+* visualize incoming data, monitor state of system
+* UI to control, should be possible to let multiple ppl run your experiments.
+
+(put on same slide as existing systems)
+
+---
+
+# What systems exist?
+
+* bpod
+* pyControl
+
+main problem is a hardware limitation that causes a software limitation. -> compiler bottleneck
+
+---
+
+# Raspberry Pis & Python
+
+being able to run python on the pi lets the system be integrated - the pis run autonomously, and can run whatever code you can write.
+
+---
+
+# Rpilot design
+
+* Efficiency
+* Flexibility
+* Reproducibility
+
+---
+
+# Rpilot structure
+
+* Structure diagram
+
+---
+
+# Task Design
+
+* Tasks are composed of phases (or are continuous) and are combined with some graduation criterion to go between them (or otherwise to change macro-state).
+* Code demo
+* allows concurrency
+* hardware, stimuli can be swapped out.
+    * manager system.
+* want to end up with a task as a set of parameters, compare w/ a script.
+
+---
+
+# Networking structure
+
+* Treelike
+* drop a node in anywhere
+    * plotting example
+* different behavioral topologies
+
+---
+
+# UI
+
+* weakest part of program
+* can be used by anyone
+* hides details of task - this is good, changing things mid-experiment is bad.
+
+---
+
+# data
+
+* brief comparison w/ other data structures.
+* benefits of HDF5, also plan on moving to database.
+
+---
+
+# Demos
+
+* 2afc w/ sound
+* 2afc w/ visual stim
+* 2afc w/ 2 pis and running wheel
+* VR mouse walking experiment
+
+---
+
+# Benchmarks?
+
+---
+
+# Expense comparison
+
+
+---
+
+<CodeSurfer
+    title="Testing this thing!"
+    code={require("!raw-loader!./test.py")}
+    lang="python"
+    showNumbers={true}
+    dark={false}
+    theme={nightOwl}
+    steps={[
+        {notes: "a note to start"},
+        {lines: [5], notes: "code initialization!!!"},
+        {range: [6,20], notes: "here is some more code!"},
+        {tokens: {10:[0]}, notes: "notice how"},
+        {tokens: {10:[0, 2]}, notes: "self node"},
+        {tokens: {10:[0, 2,5]}, notes: "is none"}
+    ]}
+    />
+
+---
