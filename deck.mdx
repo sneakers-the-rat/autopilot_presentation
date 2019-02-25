@@ -8,7 +8,11 @@ import { CodeSurfer } from "mdx-deck-code-surfer"
 
 import { withDeck } from 'mdx-deck'
 
+import { default as Split_1 } from './split_1'
+import { SplitRight } from 'mdx-deck/layouts'
+
 export { default as theme } from './future'
+
 
 
 
@@ -29,7 +33,6 @@ Distributed Behavior
 
 ---
 
-
 # In Brief
 
 <img width="800" height="575" src="./images/1_overview_2.svg"/>
@@ -41,9 +44,27 @@ Distributed Behavior
 
 ---
 
-# In Brief
+export default Split_1
 
-* Rpilot is the most flexible, inexpensive behavioral system with no loss of performance.
+# <div class="right">Problems</div>
+
+## <li class="right" dir="rtl"><span>Neuroscience needs behavior</span></li>
+## <li class="right" dir="rtl"><span>Naturalistic behavior is complex</span></li>
+## <li class="right" dir="rtl"><span>Complex behavior is hardware-intensive</span></li>
+## <li class="right" dir="rtl"><span>Behavior systems are <span class='blue'>expensive</span> and <span class='blue'>limited</span></span></li>
+
+
+## <li class='invis'>Neuroscience needs behavior</li>
+## <li class='invis'>Naturalistic behavior is complex</li>
+## <li class="invis" dir="rtl"><span>Complex behavior is hardware-intensive</span></li>
+# <div class='red'>"Solutions"</div>
+## <li class="red"><span>accept experimental <span class='red'>limitations</span></span></li>
+## <li class="red"><span>use <span class='red'>nonreproducible</span> in-house code</span></li>
+## <li class="red"><span>perform <span class='red'>underpowered</span> experiments</span></li>
+## <li class="red"><span>be part of the scientific <span class='red'>plutocracy</span></span></li>
+
+
+
 
 ---
 
@@ -96,6 +117,14 @@ being able to run python on the pi lets the system be integrated - the pis run a
 # Rpilot structure
 
 * Structure diagram
+
+---
+
+# Task Design
+
+## a task is anything that can be expressed in Python
+
+(aka anything)
 
 ---
 

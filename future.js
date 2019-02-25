@@ -18,7 +18,7 @@ var blue = '#0af';
 var themeColors = {
     primary: "#f5f5f5",
     secondary: "#252523",
-    tertiary: "#00577f",
+    tertiary: "#f26483",
     quaternary: "#4cb69f"
 }
 
@@ -44,6 +44,11 @@ var _default = _objectSpread({}, _base.default, {
     fontSize: "6em",
     color: themeColors.quaternary
   },
+  h2:{
+    color: themeColors.primary,
+    'padding-bottom': '0px',
+    fontWeight:100
+  },
   quote: {
     fontWeight: 600
   },
@@ -57,6 +62,25 @@ var _default = _objectSpread({}, _base.default, {
     '.im2':{'position':'absolute',
                 'top': 0,
                 'left': 0},
+    'li': {
+    'color': themeColors.quaternary
+    },
+    'li>span': {
+    'color': themeColors.primary
+    },
+    '.red': {
+      'color': themeColors.tertiary
+    },
+    '.blue': {
+      'color': themeColors.quaternary
+    },
+    '.invis': {
+      'visibility': 'hidden'
+    },
+    '.right': {
+      'text-align': 'right'
+    }
+
   },
   transitionDuration: '0.1s'
 });
