@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "start": "mdx-deck deck.mdx",
+    "demo": "mdx-deck demo.mdx",
     "build": "mdx-deck build deck.mdx",
     "pdf": "mdx-deck pdf deck.mdx",
     "image": "mdx-deck screenshot deck.mdx",
@@ -15,8 +16,9 @@
   "name": "rpilot",
   "version": "1.0.0",
   "dependencies": {
-    "mdx-style": "^2.0.0-alpha.2",
     "mdx-deck-code-surfer": "^0.5.5",
-    "raw-loader": "^1.0.0"
+    "mdx-style": "^2.0.0-alpha.2",
+    "raw-loader": "^1.0.0",
+    "stl-viewer": "^0.11.0"
   }
 }

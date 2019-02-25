@@ -42,12 +42,15 @@ var _default = _objectSpread({}, _base.default, {
   },
   h1:{
     fontSize: "6em",
-    color: themeColors.quaternary
+    color: themeColors.quaternary,
+    'line-height':'1.0',
+    'padding-top': '10px'
   },
   h2:{
     color: themeColors.primary,
     'padding-bottom': '0px',
-    fontWeight:100
+    fontWeight:10,
+    'line-height': '1.1'
   },
   quote: {
     fontWeight: 600
@@ -63,7 +66,8 @@ var _default = _objectSpread({}, _base.default, {
                 'top': 0,
                 'left': 0},
     'li': {
-    'color': themeColors.quaternary
+    'color': themeColors.quaternary,
+    'line-height': '1.0'
     },
     'li>span': {
     'color': themeColors.primary
@@ -79,10 +83,24 @@ var _default = _objectSpread({}, _base.default, {
     },
     '.right': {
       'text-align': 'right'
+    },
+    '.larger':{
+      fontSize: "2em",
+      'line-height': '1.5'
+    },
+    '.floatleft':{
+      'float':'left',
+    },
+    '.floatright':{
+      'float':'right'
+    },
+    '.floatcenter':{
+      'clear':'none',
+      'text-align':'center'
     }
 
   },
-  transitionDuration: '0.1s'
+  transitionDuration: '0s'
 });
 
 exports.default = _default;

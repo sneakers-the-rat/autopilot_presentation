@@ -48,8 +48,8 @@ var Split_1 = function Split_1(_ref) {
 
   var _React$Children$toArr = _react.default.Children.toArray(children.props.children),
       _React$Children$toArr2 = _toArray(_React$Children$toArr),
-      a = _React$Children$toArr2.slice(0,6),
-      rest = _React$Children$toArr2.slice(6);
+      a = _React$Children$toArr2.slice(0,5),
+      rest = _React$Children$toArr2.slice(5);
 
   return _react.default.createElement(Root, null,
     _react.default.createElement(_StyledFlex,

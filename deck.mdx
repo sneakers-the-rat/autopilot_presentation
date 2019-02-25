@@ -1,6 +1,7 @@
 import { Head, Appear } from 'mdx-deck'
-import MDXStyle from 'mdx-style'
+//import MDXStyle from 'mdx-style'
 
+import { components } from "mdx-deck"
 
 import nightOwl from "prism-react-renderer/themes/nightOwl"
 
@@ -9,9 +10,12 @@ import { CodeSurfer } from "mdx-deck-code-surfer"
 import { withDeck } from 'mdx-deck'
 
 import { default as Split_1 } from './split_1'
+import { default as Split_2 } from './split_2'
 import { SplitRight } from 'mdx-deck/layouts'
 
 export { default as theme } from './future'
+
+import STLViewer from 'stl-viewer'
 
 
 
@@ -44,6 +48,28 @@ Distributed Behavior
 
 ---
 
+# <div class="right red">Previously</div>
+
+<img width="800" height="575" src="./images/2_others.svg"/>
+
+
+---
+
+Behavioral system description
+
+---
+
+export default Split_2
+
+# <div class="right">Problems</div>
+
+## <li class="right" dir="rtl"><span>Neuroscience needs behavior</span></li>
+## <li class="right" dir="rtl"><span>Naturalistic behavior is complex</span></li>
+## <li class="right" dir="rtl"><span>Complex behavior is hardware-intensive</span></li>
+## <li class="right" dir="rtl"><span>Behavior systems are <span class='blue'>expensive</span> and <span class='blue'>limited</span></span></li>
+
+---
+
 export default Split_1
 
 # <div class="right">Problems</div>
@@ -54,81 +80,87 @@ export default Split_1
 ## <li class="right" dir="rtl"><span>Behavior systems are <span class='blue'>expensive</span> and <span class='blue'>limited</span></span></li>
 
 
-## <li class='invis'>Neuroscience needs behavior</li>
-## <li class='invis'>Naturalistic behavior is complex</li>
+
+## <li class="invis" dir="rtl"><span>Neuroscience needs behavior</span></li>
+## <li class="invis" dir="rtl"><span>Naturalistic behavior is complex</span></li>
+## <li class="invis" dir="rtl"><span>Naturalistic behavior is complex</span></li>
 ## <li class="invis" dir="rtl"><span>Complex behavior is hardware-intensive</span></li>
+
+
 # <div class='red'>"Solutions"</div>
+
+
 ## <li class="red"><span>accept experimental <span class='red'>limitations</span></span></li>
 ## <li class="red"><span>use <span class='red'>nonreproducible</span> in-house code</span></li>
 ## <li class="red"><span>perform <span class='red'>underpowered</span> experiments</span></li>
 ## <li class="red"><span>be part of the scientific <span class='red'>plutocracy</span></span></li>
 
+---
+
+# <span class="blue">RPilot structure </span>
+
+<img height="500" src="./images/4_rpilot.svg"/>
+
+---
+
+# <img height="70" src="./images/hardware.svg"/> Hardware
+
+Use any hardware! We also provide a basic set of printable pieces and parts lists
+
+<div class="floatleft">
+<STLViewer
+    url='./models/nosepoke.stl'
+    width={400}
+    height={400}
+    modelColor='#f26483'
+    backgroundColor='#252523'
+    rotate={true}
+    orbitControls={true}
+    lights={[1,1,1]}
+    rotationSpeeds={[0.01,0,0]}
+/>
+</div>
+<div class="floatright">
+<STLViewer
+    url='./models/box_cutout.stl'
+    width={400}
+    height={400}
+    modelColor='#f26483'
+    backgroundColor='#252523'
+    rotate={true}
+    orbitControls={true}
+    lights={[1,1,1]}
+    rotationSpeeds={[0.01,0,0]}
+/>
+</div>
+
+---
+
+# Stimuli
 
 
 
 ---
 
-# Why do we need an rpilot
+# Networking
 
-* passive presentation won't get us answers, we need animals to be engaged - either to study the active brain or to provide some output readout. We all know we need behavior
-* most behavior experiments are run by in-house code, that's disastrous for reproducibility and transparency.
-* most labs can't afford development time for hardware/software, and so are left w/ stuff that works pretty badly.
-* current solutions are ridiculously expensive, which is bad for scientific equity and access
-* also, systems neuro is begging for a replication crisis with n=3, so expense is a concrete problem for science.
+* Treelike
+* drop a node in anywhere
+    * plotting example
+* different behavioral topologies
 
----
-
-# What is a behavioral system?
-
-* hardware
-* optionally stimuli
-* task design
-* data storage and management
-* visualize incoming data, monitor state of system
-* UI to control, should be possible to let multiple ppl run your experiments.
-
-(put on same slide as existing systems)
 
 ---
 
-# What systems exist?
-
-* bpod
-* pyControl
-
-main problem is a hardware limitation that causes a software limitation. -> compiler bottleneck
+# Concurrency
 
 ---
 
-# Raspberry Pis & Python
-
-being able to run python on the pi lets the system be integrated - the pis run autonomously, and can run whatever code you can write.
-
----
-
-# Rpilot design
-
-* Efficiency
-* Flexibility
-* Reproducibility
-
----
-
-# Rpilot structure
-
-* Structure diagram
-
----
-
-# Task Design
+# Task Structure
 
 ## a task is anything that can be expressed in Python
 
 (aka anything)
-
----
-
-# Task Design
 
 * Tasks are composed of phases (or are continuous) and are combined with some graduation criterion to go between them (or otherwise to change macro-state).
 * Code demo
@@ -139,27 +171,9 @@ being able to run python on the pi lets the system be integrated - the pis run a
 
 ---
 
-# Networking structure
+# Data structure
 
-* Treelike
-* drop a node in anywhere
-    * plotting example
-* different behavioral topologies
-
----
-
-# UI
-
-* weakest part of program
-* can be used by anyone
-* hides details of task - this is good, changing things mid-experiment is bad.
-
----
-
-# data
-
-* brief comparison w/ other data structures.
-* benefits of HDF5, also plan on moving to database.
+and reproducibility
 
 ---
 
