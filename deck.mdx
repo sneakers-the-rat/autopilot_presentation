@@ -3,7 +3,7 @@ import { Head, Appear } from 'mdx-deck'
 
 import { components } from "mdx-deck"
 
-import nightOwl from "prism-react-renderer/themes/nightOwl"
+import nightOwlDark from "./nightOwlDark"
 
 import { CodeSurfer } from "mdx-deck-code-surfer"
 
@@ -17,7 +17,12 @@ export { default as theme } from './future'
 
 import STLViewer from 'stl-viewer'
 
+import ReactPlayer from 'react-player'
 
+import Video from 'Video'
+import {Treebeard} from 'react-treebeard';
+
+import FileTree from './FileTree'
 
 
 <Head>
@@ -86,9 +91,7 @@ export default Split_1
 ## <li class="invis" dir="rtl"><span>Naturalistic behavior is complex</span></li>
 ## <li class="invis" dir="rtl"><span>Complex behavior is hardware-intensive</span></li>
 
-
 # <div class='red'>"Solutions"</div>
-
 
 ## <li class="red"><span>accept experimental <span class='red'>limitations</span></span></li>
 ## <li class="red"><span>use <span class='red'>nonreproducible</span> in-house code</span></li>
@@ -103,6 +106,36 @@ export default Split_1
 
 ---
 
+<CodeSurfer
+    title="An Example Task..."
+    code={require("!raw-loader!./sample_task.py")}
+    lang="python"
+    showNumbers={true}
+    dark={true}
+    theme={nightOwlDark}
+    notes={() => (
+        <span style={{background:"pink"}}></span>
+    )}
+    steps={[
+        {notes: "A task in ~100 lines"},
+        {range: [1,9], notes: "Simply giving the mice water at a random port"},
+        {range: [11, 16], notes: "1) Task Parameters define how the task functions."},
+        {range: [18, 22], notes: "2) TrialData describes to pytables what data will be returned"},
+        {range: [24, 41], notes: "3) The Hardware that will be used by the task."},
+        {range: [26, 27], notes: "Hardware is configured independently of the task, so you can use any."},
+        {range: [43, 50], notes: "4) Finally, we describe how the data should be mapped to graphing elements in the GUI."},
+        {range: [52, 61], notes: "Tasks can take any form, in this example we cycle through two methods"},
+        {range: [63, 85], notes: "Stage 1: Pick a random port to open"},
+        {range: [71, 75], notes: "Stage functions can generate triggers, in this case to open the target port when it is poked."},
+        {range: [80, 85], notes: "The Pilot returns data to be stored as soon as it's computed."},
+        {range: [87, 101], notes: "The second stage just turns the lights off!"},
+        {tokens: {87: [0,1,2,3,4,5,6], 98: [1]}, notes: "The timestamp is returned here -- rpilot precaches so as little time is spent waiting as possible" }
+    ]}
+    />
+
+
+---
+
 # <img height="70" src="./images/hardware.svg"/> Hardware
 
 Use any hardware! We also provide a basic set of printable pieces and parts lists
@@ -112,7 +145,7 @@ Use any hardware! We also provide a basic set of printable pieces and parts list
     url='./models/nosepoke.stl'
     width={400}
     height={400}
-    modelColor='#f26483'
+    modelColor='#4cb69f'
     backgroundColor='#252523'
     rotate={true}
     orbitControls={true}
@@ -125,7 +158,7 @@ Use any hardware! We also provide a basic set of printable pieces and parts list
     url='./models/box_cutout.stl'
     width={400}
     height={400}
-    modelColor='#f26483'
+    modelColor='#4cb69f'
     backgroundColor='#252523'
     rotate={true}
     orbitControls={true}
@@ -136,8 +169,25 @@ Use any hardware! We also provide a basic set of printable pieces and parts list
 
 ---
 
-# Stimuli
+# Stimuli - Sound
 
+rpilot does 192kHz/24bit sound with the lowest onset latency of any behavior system.
+
+<center>
+<img height="400" src="./images/lags.svg"/>
+</center>
+
+[bpod ref](https://sites.google.com/site/bpoddocumentation/bpod-user-guide/function-reference/psychtoolboxsoundserver) [pycontrol ref](https://pycontrol.readthedocs.io/en/latest/user-guide/hardware/) [psychopy ref](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=5&cad=rja&uact=8&ved=2ahUKEwjg4tm4q9jgAhULCXwKHb9uDGAQFjAEegQIBRAC&url=http%3A%2F%2Fwww.landaulab.com%2Fuploads%2F5%2F4%2F9%2F9%2F54994549%2Ftime_precision_in_psychopy.pdf&usg=AOvVaw1JKjiETY2OyvyZ7i0isWJD)
+
+
+---
+
+# Can the pi play movies?
+<center>
+<video height="400" controls>
+<Video src="/videos/rpilot_vis.mp4"/>
+</video>
+</center>
 
 
 ---
@@ -156,24 +206,8 @@ Use any hardware! We also provide a basic set of printable pieces and parts list
 
 ---
 
-# Task Structure
-
-## a task is anything that can be expressed in Python
-
-(aka anything)
-
-* Tasks are composed of phases (or are continuous) and are combined with some graduation criterion to go between them (or otherwise to change macro-state).
-* Code demo
-* allows concurrency
-* hardware, stimuli can be swapped out.
-    * manager system.
-* want to end up with a task as a set of parameters, compare w/ a script.
-
----
-
 # Data structure
 
-and reproducibility
 
 ---
 
@@ -192,24 +226,8 @@ and reproducibility
 
 # Expense comparison
 
-
+bpod uses asus xonar dx sound card -
 ---
 
-<CodeSurfer
-    title="Testing this thing!"
-    code={require("!raw-loader!./test.py")}
-    lang="python"
-    showNumbers={true}
-    dark={false}
-    theme={nightOwl}
-    steps={[
-        {notes: "a note to start"},
-        {lines: [5], notes: "code initialization!!!"},
-        {range: [6,20], notes: "here is some more code!"},
-        {tokens: {10:[0]}, notes: "notice how"},
-        {tokens: {10:[0, 2]}, notes: "self node"},
-        {tokens: {10:[0, 2,5]}, notes: "is none"}
-    ]}
-    />
 
 ---
