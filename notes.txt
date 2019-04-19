@@ -1,0 +1,11 @@
+- gaussian/distribution rather than scatterplot on lags plot
+- introduce hardware & top level description
+- combination of python and compiled code maximizes useability and
+- include video of plotting actively running mice as demo of parallelism
+- include specific description of hardware that needs to be added or removed.
+- statement re: git hashes and local code changes
+- describe zmq message structure in the '3 levels of flexibility'
+- add tiny details matter to behavior in 'problems' slide
+- more specific introduction to the problem/mission statement - state the question.
+- start with link to open-source movement in science.
+- remember to say that it's documented
