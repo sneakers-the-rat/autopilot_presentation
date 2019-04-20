@@ -65,6 +65,9 @@ const theme = createTheme(
 }
 );
 
+// copy the index for hosting on github pages
+require('file-loader?name=index.[ext]!../index_docs.html');
+
 
 
 

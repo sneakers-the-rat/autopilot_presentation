@@ -9,9 +9,9 @@ module.exports = {
   entry: ["@babel/polyfill", "./index"],
 
   output: {
-    path: path.join(__dirname, "dist"),
+    path: path.join(__dirname, "docs"),
     filename: "bundle.js",
-    publicPath: "/dist/"
+    publicPath: '/docs/'
   },
 
   plugins: [
@@ -69,7 +69,8 @@ module.exports = {
               limit: 8192
             }
           }
-        ]
+        ],
+        include: path.join(__dirname, 'assets')
       },
       {
         test: /\.svg$/,
@@ -77,13 +78,23 @@ module.exports = {
           {
             loader: "url-loader",
 
-            options: {
-              limit: 10000,
-              mimetype: "image/svg+xml"
-            }
+            //options: {
+            //  limit: 10000,
+            //  mimetype: "image/svg+xml"
+            //}
           }
-        ]
+        ],
+        include: path.join(__dirname, 'assets')
       }
+      // {
+      //   test: /index_docs\.html$/,
+      //   use: [
+      //     {
+      //       loader: "file-loader",
+      //       name: "index.html"
+      //     }
+      //   ]
+      // }
     ]
   },
 

@@ -3,6 +3,8 @@
 var path = require('path');
 var webpack = require('webpack');
 
+//const ASSET_PATH = process.env.ASSET_PATH || '/assets';
+
 
 module.exports = {
   node: {
@@ -17,9 +19,9 @@ module.exports = {
     './index'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'docs'),
     filename: 'bundle.js',
-    publicPath: '/dist',
+    publicPath: '/docs',
   },
   plugins: [
     new webpack.NamedModulesPlugin(),
