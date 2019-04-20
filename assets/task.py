@@ -1,19 +1,28 @@
 class Nafc(Task):
-    PARAMS = {}
-    PARAMS['stim']   = {'tag'  : 'Sound Stimuli',
-                        'type' : 'sounds'}
-    PARAMS['reward'] = {'tag'  : 'Reward Duration (ms)',
-                        'type' : 'int'}
+    """
+    Minimal two-alternative forced-choice task.
+
+    mouse hear sound,
+    mouse poke nose,
+    mouse decide destiny
+    """
+
+    PARAMS = {
+        'stim':   {'tag'  : 'Sound Stimuli',
+                   'type' : 'sounds'},
+        'reward': {'tag'  : 'Reward Duration (ms)',
+                   'type' : 'int'}
+    }
 
     class TrialData(tables.IsDescription):
-        target = tables.StringCol(1)
+        target  = tables.StringCol(1)
         correct = tables.BoolCol()
 
-    PLOT = {}
-    PLOT['data']  =  {'target'  : 'point',
-                      'correct' : 'rollmean'},
-    # n trials to roll window over
-    PLOT['params'] = {'roll_window' : 50}
+    PLOT = {
+        'data':   {'target'  : 'point',
+                   'correct' : 'rollmean'},
+        'params': {'roll_window' : 50}
+    }
 
     HARDWARE = {
         'POKES':{
@@ -25,7 +34,7 @@ class Nafc(Task):
         }
     }
 
-    def __init__(stim, reward=10):
+    def __init__(self, stim, reward=10):
 
         self.stim_mgr = Stim_Manager(stim)
         self.reward   = Reward_Manager(reward)
@@ -37,7 +46,7 @@ class Nafc(Task):
 
         self.stages.next()()
 
-    def discrim():
+    def discrim(self):
         target, wrong, stim = self.stim_mgr.next()
         self.target = target
 
@@ -52,7 +61,7 @@ class Nafc(Task):
 
         stim.play()
 
-    def reinforcement(response):
+    def reinforcement(self, response):
         if response == self.target:
             self.node.send('DATA', {'correct':True}
         else:

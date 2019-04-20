@@ -1,8 +1,15 @@
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 /* eslint-disable */
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+
 var path = require("path");
 var webpack = require("webpack");
+
+// copy the index for hosting on github pages
+//require('file-loader?name=index.[ext]!../../index_docs.html');
+//require('./index_docs.html')
 
 module.exports = {
   mode: "production",
@@ -19,7 +26,8 @@ module.exports = {
       "process.env": {
         NODE_ENV: JSON.stringify("production")
       }
-    })
+    }),
+    //new BundleAnalyzerPlugin()
   ],
 
   module: {
@@ -85,16 +93,18 @@ module.exports = {
           }
         ],
         include: path.join(__dirname, 'assets')
+      },
+      {
+        test: /\.(html)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "index.html"
+            }
+          }
+        ]
       }
-      // {
-      //   test: /index_docs\.html$/,
-      //   use: [
-      //     {
-      //       loader: "file-loader",
-      //       name: "index.html"
-      //     }
-      //   ]
-      // }
     ]
   },
 

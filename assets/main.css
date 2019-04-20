@@ -1,0 +1,18 @@
+
+.code {
+    font-family: 'Fira Code';
+}
+/*#task h1 {
+    white-space:normal !important;
+    width: 90% !important;
+    border: 10px solid deeppink !important;
+}*/
+
+/*.spectacle-slide .token {
+    font-family: 'Fira Code', monospace !important;
+}*/
+
+/* code slide notes */
+.spectacle-slide pre + div {
+    width: 80% !important;
+}

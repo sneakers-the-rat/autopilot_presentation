@@ -9,3 +9,5 @@
 - more specific introduction to the problem/mission statement - state the question.
 - start with link to open-source movement in science.
 - remember to say that it's documented
+- add explicit precaching and dedicated server process/messaging/etc.
+- add feature comparison table

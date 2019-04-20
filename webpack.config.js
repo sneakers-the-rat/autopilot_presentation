@@ -19,9 +19,9 @@ module.exports = {
     './index'
   ],
   output: {
-    path: path.join(__dirname, 'docs'),
+    path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/docs',
+    publicPath: '/dist',
   },
   plugins: [
     new webpack.NamedModulesPlugin(),

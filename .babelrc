@@ -9,7 +9,7 @@
     ["prismjs", {
         "languages": ["python"],
         "plugins": ["line-numbers"],
-        "theme": "funky",
+        "theme": "okaidia",
         "css": true
     }]
   ],
