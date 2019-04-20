@@ -2154,7 +2154,6 @@
 </g>
 <text transform="matrix(1 0 0 1 76.5395 39.251)"><tspan x="0" y="0" class="st0 st4 st5">distribute</tspan><tspan x="21.6" y="21.6" class="st0 st4 st5">tasks to</tspan><tspan x="-32.4" y="43.2" class="st0 st4 st5">raspberry pis</tspan></text>
 <text transform="matrix(1 0 0 1 33.1166 366.251)" class="st0 st4 st5">raspis control hardware</text>
-<text transform="matrix(1 0 0 1 357.3324 366.251)" class="st0 st4 st5">and each other</text>
 <g id="_x37_GEpy7.tif">
 	<g>
 		<path class="st0" d="M132.6,329.7c-0.5,0-1,0-1.4,0c0-3,0-6,0-9c0.5,0,0.9,0,1.4,0c0-0.1,0-0.2,0-0.3c0-2.5,0-5,0-7.5
@@ -2207,6 +2206,4 @@
 <polyline class="st2" points="141.6,304 141.6,297 121.6,297 115.6,291 115.6,284 115.6,278 "/>
 <polyline class="st2" points="123.6,278 123.6,284 128.6,289 226.6,289 226.6,293 "/>
 <polyline class="st2" points="107.6,278 107.6,291 102.1,296.5 70.6,296.5 70.6,303 "/>
-<polyline class="st2" points="460.6,278 460.6,285 453.6,292 382.6,292 375.1,284.5 375.1,278 "/>
-<polyline class="st2" points="469.6,278 469.6,285 453.1,301.5 382.6,301.5 365.9,284.8 294.6,284.8 289.2,279.4 289.2,274 "/>
 </svg>

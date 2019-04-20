@@ -1,40 +1,64 @@
+[![Maintenance Status][maintenance-image]](#maintenance-status)
 
-# mdx-deck basic template
+# Spectacle Boilerplate
 
-This was generated with [mdx-deck][]'s `npm init deck` command.
+## Contents
 
-## Development
+- [Reference](#reference)
+- [Getting Started](#getting-started)
+- [Tutorial](#tutorial)
+- [Build & Deployment](#build-deployment)
 
-To run the presentation deck in development mode:
+## Reference
+
+The Spectacle core API is available in the [Spectacle Docs](https://github.com/FormidableLabs/spectacle/blob/master/README.md).
+
+## Getting Started
+
+1. Download the boilerplate
+
+   ```sh
+   git clone git@github.com:FormidableLabs/spectacle-boilerplate.git
+   ```
+
+2. Remove existing version control
+
+   ```sh
+   rm -R .git
+   ```
+
+3. Install dependencies
+
+   ```sh
+   yarn install
+   ```
+
+4. Start the webpack server. The server will run at [`localhost:3000`](http://localhost:3000).
+
+   ```sh
+   yarn start
+   ```
+
+## Tutorial
+
+If want you a step-by-step guide for getting started with Spectacle, a basic tutorial is available [here](https://github.com/FormidableLabs/spectacle/blob/master/docs/tutorial.md).
+
+## Build & Deployment
+
+Building the dist version of the project is as easy as running
 
 ```sh
-npm start
+yarn build
 ```
 
-Edit the [`deck.mdx`](deck.mdx) file to get started.
-
-## Exporting
-
-To build the presentation deck as static HTML:
-
-NOTE: You have to make the changes described [here](https://github.com/pomber/code-surfer/issues/8#issuecomment-422095168) and [here](https://github.com/pomber/code-surfer/issues/8#issuecomment-430580725) for it to build properly with codesurfer.
+If you want to deploy the slideshow to surge, run
 
 ```sh
-npm run build
+yarn deploy
 ```
 
-To export a PDF:
+## Maintenance Status
 
-```sh
-npm run pdf
-```
+**Active:** Formidable is actively working on this project, and we expect to continue for work for the foreseeable future. Bug reports, feature requests and pull requests are welcome. 
 
-To export an image of the title slide:
-
-```sh
-npm run image
-```
-
-For more documentation see the [mdx-deck][] repo.
-
-[mdx-deck]: https://github.com/jxnblk/mdx-deck
+[maintenance-image]: https://img.shields.io/badge/maintenance-active-green.svg

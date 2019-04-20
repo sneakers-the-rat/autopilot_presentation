@@ -1,16 +1,26 @@
 library(ggplot2)
+library(here)
 
-tests <- read.csv('./rpilot_latency.csv')
+
+tests <- read.csv('rpilot_latency.csv')
 tests <- data.frame(lags=tests[1:51, "latency"])
 tests$systems <- 'rpilot'
-mean_lag <- mean(lags$lags)
-system_names <- c("rpilot", "bpod", "pyControl", "psychopy")
+
+bpod <- read.csv('bpod_latency.csv')
+bpod <- data.frame(lags=bpod[1:100,"latency"])
+bpod$systems <- 'bpod (observed)'
+
+tests <- rbind(tests, bpod)
+
+mean_lag <- mean(tests[tests$systems=="rpilot",]$lags)
+bpod_lag <- mean(tests[tests$systems=="bpod (observed)",]$lags)
+system_names <- c("rpilot", "bpod (claimed)", "pyControl", "bpod (observed)", "psychopy")
 mean_lags <- data.frame(systems = ordered(system_names, levels=rev(system_names)),
-                        lags = c(mean_lag, 7.5, 15, 40))
+                        lags = c(mean_lag, 7.5, 15, bpod_lag, 40))
 
 g.lags <- ggplot(mean_lags, aes(x=systems, y=lags))+
   geom_bar(aes(x=systems, y=lags),
-           fill=c("#f26483", "#f26483", "#f26483","#4cb69f"),
+           fill=c("#ff2020", "#40d375", "#ff2020","#ff2020","#40d375"),
            stat="identity")+
   geom_point(data=tests,
              position=position_jitter(height=0,width=0.2),
@@ -20,4 +30,4 @@ g.lags <- ggplot(mean_lags, aes(x=systems, y=lags))+
   coord_flip()+
   theme_void()
 
-ggsave('./images/lags_render.pdf', plot=g.lags, width=8, height=3, units="in", useDingbats=FALSE)
+ggsave('./assets/lags_render.pdf', plot=g.lags, width=8, height=3, units="in", useDingbats=FALSE)
