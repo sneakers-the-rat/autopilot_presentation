@@ -107,6 +107,10 @@ module.exports = {
         }
       }],
       include: path.join(__dirname, 'assets')
-    }]
+    }, {
+    test: /\.mp4$/,
+    use: 'file-loader'
+  }
+    ]
   }
 };

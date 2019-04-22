@@ -16,3 +16,37 @@
 .spectacle-slide pre + div {
     width: 80% !important;
 }
+
+
+.tight {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.tighttop {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.tightbottom {
+    margin-bottom: 0px;
+}
+
+.col_container {
+    flex-flow:column;
+    display:flex;
+    
+}
+
+.col_container .fillcol {
+    flex-grow: 1;
+    max-width: 75%;
+   
+}
+
+/* styling tables */
+
+
+
+
+

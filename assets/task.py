@@ -36,13 +36,13 @@ class Nafc(Task):
 
     def __init__(self, stim, reward=10):
 
+        self.init_hardware()
+
         self.stim_mgr = Stim_Manager(stim)
         self.reward   = Reward_Manager(reward)
 
         stage_list  = [self.discrim, self.reinforcement]
         self.stages = itertools.cycle(stage_list)
-
-        self.init_hardware()
 
         self.stages.next()()
 
@@ -68,3 +68,32 @@ class Nafc(Task):
             self.node.send('DATA', {'correct':False}
 
         self.stages.next()()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
