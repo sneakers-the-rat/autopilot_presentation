@@ -1,50 +1,106 @@
 // treebeard to show file hierarchy
 
 import React, {PureComponent} from 'react';
+import ReactDOM from 'react-dom';
 import {Treebeard, decorators} from 'react-treebeard';
 import PropTypes from 'prop-types';
 import * as filters from './filters';
 import styles from './tb_styles'
 
+import {CodePane} from 'spectacle';
+
 import styled from '@emotion/styled';
 
 
-const data = {
-    name: 'root',
-    toggled: true,
+const data = [
+{
+    name: 'current_task',
+    content:{
+        "step_name" : "tone discrim",
+        "task_type" : "2AFC",
+        "bias_mode" :0,
+        "punish_sound" : false,
+        "stim" : {
+          "sounds" : {
+            "L": {
+                "duration" : 100,
+                "frequency" : 10000,
+                "type" : "tone", 
+                "amplitude" : 0.01},
+            "R": {"...":"..."}
+        }},
+        "reward": {
+            "type" : "constant_time",
+            "duration" : 30
+        }, 
+        "graduation" : {
+            "type" : "accuracy", "threshold" : 0.75, "window" : 400},
+        },
+        text:"Protocols are saved alongside data as portable JSON"
+        },
+{
+    name: 'data',
+    text: 'data are stored as hdf5 tables organized by task',
+    children: [
+        {name: 'task_name',
+        toggled:true,
+        children: [
+        {name: "S00_free_water",
+        children: {name:'trial_data'}},
+        {name: "S01_shaping_step",
+        children: {name:'trial_data'}},
+        {name: "S02_tone_discrim",
+        children: {name:'trial_data'}}]} 
+    ]
+},
+{
+    name: 'history',
+    toggled:false,
+    text: 'any changes to tasks, parameters, etc. are logged as history',
+    children: [
+    {
+        name: 'git_hashes',
+        text: 'the version of code running the task and any local modifications are logged so the experiment can be reproduced exactly'
+    },
+    {
+        name: 'parameter_history'
+    },
+    {
+        name: 'past_protocols'
+    },
+    {
+        name: 'weights',
+        text: 'other subject-specific historical data, like weights, can be logged as well'
+    }]
+},
+{
+    name: 'info',
+    text: 'biographical information for the subject',
     children: [
         {
-            name: 'parent',
-            children: [
-                { name: 'child1' },
-                { name: 'child2' }
-            ]
+            name: 'animal_id',
+            content: 'animal_id_059594'
         },
         {
-            name: 'loading parent',
-            loading: true,
-            children: []
+            name: "birth_date",
+            content: "2000-01-01"
         },
         {
-            name: 'parent',
-            children: [
-                {
-                    name: 'nested parent',
-                    children: [
-                        { name: 'nested child 1' },
-                        { name: 'nested child 2' }
-                    ]
-                }
-            ]
+            name: "genotype",
+            content: {
+                cre: 'ChR2a',
+                lox: 'Parvalbumin'
+            }
         }
     ]
-};
+}
+];
 
-const Div = styled('Div', {
+const DivStyled = styled('div', {
     shouldForwardProp: prop => ['className', 'children'].indexOf(prop) !== -1
 })(({style}) => style);
 
-const HELP_MSG = 'Select A Node To See Its Data Structure Here...';
+const HELP_MSG = '';
 
 // Example: Customising The Header Decorator To Include Icons
 decorators.Header = ({style, node}) => {
@@ -53,27 +109,60 @@ decorators.Header = ({style, node}) => {
     const iconStyle = {marginRight: '5px'};
 
     return (
-        <Div style={style.base}>
-            <Div style={style.title}>
-                <i className={iconClass} style={iconStyle}/>
+            <DivStyled style={style.base}>
+            <DivStyled style={style.title}>
+            <i className={iconClass} style={iconStyle}/>
 
-                {node.name}
-            </Div>
-        </Div>
-    );
+            {node.name}
+            </DivStyled>
+            </DivStyled>
+            );
 };
 
 class NodeViewer extends PureComponent {
     render() {
         const style = styles.viewer;
-        let json = JSON.stringify(this.props.node, null, 4);
+        var label_text;
+        var labelnode;
+        let json;
+
+
+        try {
+            json = JSON.stringify(this.props.node['content'], null, 2);
+            //const newNode = document.createElement('div');
+        } catch(err) {
+            json = JSON.stringify(this.props.node, null, 4);
+        }
+
 
         if (!json) {
             json = HELP_MSG;
         }
 
-        return <Div style={style.base}>{json}</Div>;
+
+
+        try{
+            label_text = this.props.node['text'];
+        } catch(err){
+            console.log(err);
+            label_text = " ";
+        }
+
+        try{
+            labelnode = document.getElementsByClassName("treetext")[0].textContent = label_text;
+        //labelnode.textContent = "newtext";
+        //this.refs.treetext.text = "newtest";
+    } catch(err){
+        console.log(err);
     }
+    //return {json}</DivStyled>;
+
+    return <DivStyled style={style.base}>{json}</DivStyled>;
+    
+    //return(json);
+
+}
+
 }
 
 NodeViewer.propTypes = {
@@ -92,7 +181,7 @@ export default class DataTree extends PureComponent {
         const {cursor} = this.state;
 
         if (cursor) {
-            cursor.active = false;
+           cursor.active = false;
         }
 
         node.active = true;
@@ -117,27 +206,18 @@ export default class DataTree extends PureComponent {
         const {data: stateData, cursor} = this.state;
 
         return (
-            <Div>
-                <Div style={styles.searchBox}>
-                    <Div className="input-group">
-                        <span className="input-group-addon">
-                          <i className="fa fa-search"/>
-                        </span>
-                        <input className="form-control"
-                               onKeyUp={this.onFilterMouseUp.bind(this)}
-                               placeholder="Search the tree..."
-                               type="text"/>
-                    </Div>
-                </Div>
-                <Div style={styles.component}>
-                    <Treebeard data={stateData}
-                               decorators={decorators}
-                               onToggle={this.onToggle}/>
-                </Div>
-                <Div style={styles.component}>
-                    <NodeViewer node={cursor}/>
-                </Div>
-            </Div>
-        );
+                <DivStyled>
+                <DivStyled style={styles.component}
+                className="datatree">
+                <Treebeard data={stateData}
+                decorators={decorators}
+                onToggle={this.onToggle}/>
+                </DivStyled>
+                <DivStyled style={styles.component}
+                className="datatree">
+                <NodeViewer node={cursor}/>
+                </DivStyled>
+                </DivStyled>
+                );
     }
 }

@@ -44,7 +44,21 @@
    
 }
 
+/* explorer */
+.datatree ul {
+    font-family: "Anonymous Pro";
+}
+
+/* viewer */
+.datatree {
+    font-family: "Anonymous Pro";
+    font-size: 20pt;
+}
+
 /* styling tables */
+table {
+ border-collapse: collapse;
+}
 
 
 

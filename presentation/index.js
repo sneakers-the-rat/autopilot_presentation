@@ -45,6 +45,8 @@ import { Player } from 'video-react';
 
 import DataTree from './datatree';
 
+import styled from 'react-emotion';
+
 
 // export default props => {
 //   return (
@@ -61,6 +63,10 @@ import DataTree from './datatree';
 //import 'prismjs/themes/prism.css'
 
 //window.Prism = Prism;
+
+const ULRow = styled(TableRow)`
+border-bottom: 5px solid red;
+`;
 
 
 
@@ -116,7 +122,7 @@ export default class Presentation extends React.Component {
     return(
 <Deck
 transition={['fade']}
-transitionDuration={200}
+transitionDuration={500}
 theme={theme}
 progress="bar"
 contentWidth="95%"
@@ -476,27 +482,88 @@ cad models
 </Slide>
 
 <Slide>
-<Heading style={{"margin-bottom":"0px"}} size={3} textColor="tertiary" caps textAlign="left">Reproducibility - <span style={{'color':'#f5f5f5'}}>Self-documenting data</span></Heading>
+<Heading style={{"margin-bottom":"0px"}} size={3} textColor="tertiary" caps textAlign="center">Reproducibility - <span style={{'color':'#f5f5f5'}}>Self-documenting data</span></Heading>
+
+<Text className="treetext" textColor="primary" textFont="secondary" style={{"border": "10px pink", "width":"80%"}} bgColor="tertiary" textSize={36}> </Text>
 
 <DataTree/>
 
 </Slide>
 
 <Slide>
-Reproducibility - task sharing json file - the tiny details matter.
+<Heading style={{"margin-bottom":"0px"}} size={3} textColor="tertiary" caps textAlign="center">Reproducibility - <span style={{'color':'#f5f5f5'}}>Expense</span></Heading>
+<List>
+<ListItem textFont="secondary" textSize={30}>Complex tasks have long training times</ListItem>
+<ListItem textFont="secondary" textSize={30}>Behavioral instrumentation can be the bottleneck</ListItem>
+<ListItem textFont="secondary" textSize={30}>Low-n experiments are bad for statistical inference</ListItem>
+<ListItem textFont="secondary" textSize={30} textColor="tertiary">RPilot is an order of magnitude less expensive than other systems</ListItem>
+</List>
+
+<Table>
+  <TableHeader>
+    <TableRow textColor="tertiary">
+      <TableHeaderItem />
+      <TableHeaderItem>RPilot</TableHeaderItem>
+      <TableHeaderItem>BPod</TableHeaderItem>
+      <TableHeaderItem>pyControl</TableHeaderItem>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableItem textAlign="right">Behavior CPU</TableItem>
+      <TableItem textFont="secondary">$35</TableItem>
+      <TableItem textFont="secondary">$745</TableItem>
+      <TableItem textFont="secondary">$284</TableItem>
+    </TableRow>
+    <TableRow>
+      <TableItem textAlign="right">Nosepoke (x3)</TableItem>
+      <TableItem textFont="secondary">$216</TableItem>
+      <TableItem textFont="secondary" >$735</TableItem>
+      <TableItem textFont="secondary">$579</TableItem>
+    </TableRow>
+    <ULRow>
+      <TableItem textAlign="right">Total for One</TableItem>
+      <TableItem textFont="secondary" textColor="#40d375">$251</TableItem>
+      <TableItem textFont="secondary" textColor="tertiary">$1480</TableItem>
+      <TableItem textFont="secondary" textColor="tertiary">$920</TableItem>
+    </ULRow>
+    <Appear>
+    <TableRow>
+      <TableItem textAlign="right">Five Systems</TableItem>
+      <TableItem textFont="secondary">$1255</TableItem>
+      <TableItem textFont="secondary">$7400</TableItem>
+      <TableItem textFont="secondary">$4600</TableItem>
+    </TableRow>
+    </Appear>
+    <Appear>
+    <TableRow>
+      <TableItem textAlign="right">Host Computer(s)</TableItem>
+      <TableItem textFont="secondary">$1000</TableItem>
+      <TableItem textFont="secondary">$5000</TableItem>
+      <TableItem textFont="secondary">$5000</TableItem>
+    </TableRow>
+    </Appear>
+    <Appear>
+    <ULRow>
+      <TableItem textAlign="right">Total for Five</TableItem>
+      <TableItem textFont="secondary" textColor="#40d375">$2255</TableItem>
+      <TableItem textFont="secondary" textColor="tertiary">$12400</TableItem>
+      <TableItem textFont="secondary" textColor="tertiary">$9600</TableItem>
+    </ULRow>
+    </Appear>
+    <Appear>
+    <TableRow>
+      <TableItem textAlign="right">Total for Ten</TableItem>
+      <TableItem textFont="secondary" textColor="#40d375">$3510</TableItem>
+      <TableItem textFont="secondary" textColor="tertiary">$24800</TableItem>
+      <TableItem textFont="secondary" textColor="tertiary">$19200</TableItem>
+    </TableRow>
+    </Appear>
+  </TableBody>
+</Table>
 
 
 
-</Slide>
-
-<Slide>
-
-Task library
-
-</Slide>
-
-<Slide>
-expense
 </Slide>
 
 <Slide>
@@ -514,6 +581,9 @@ Demos
 </List>
 </Slide>
 
+<Slide>
+the future - task library
+</Slide>
 
 </Deck>
 );
