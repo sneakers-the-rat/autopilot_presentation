@@ -190,7 +190,6 @@ But existing systems are...
 </Layout>
 </Slide>
 
-
 <Slide bgColor="primary" transition={['none']}>
 <Heading textColor="secondary" size={1} textAlign="left">Introducing RPilot</Heading>
 <Heading textColor="tertiary" size={5} textAlign="left">A Python framework for behavioral neuroscience</Heading>
@@ -198,13 +197,7 @@ But existing systems are...
 </Slide>
 
 <Slide>
-Software focus, hardware focus, rpilot is both
-</Slide>
-
-
-<Slide>
 <Heading size={1} textColor="secondary" caps textAlign="center">Design Priorities</Heading>
-
 <List textColor="tertiary">
 <ListItem textSize={60}>Efficiency - <span style={{'color':'#f5f5f5'}}>RPilot is fast</span></ListItem>
 <ListItem textSize={60}>Flexibility - <span style={{'color':'#f5f5f5'}}>RPilot can do anything</span></ListItem>
@@ -509,6 +502,7 @@ note:"Rounding out the task as expected, the classics never die." },
 </List>
 
 <Table>
+<Appear>
   <TableHeader>
     <TableRow textColor="tertiary">
       <TableHeaderItem />
@@ -517,25 +511,32 @@ note:"Rounding out the task as expected, the classics never die." },
       <TableHeaderItem>pyControl</TableHeaderItem>
     </TableRow>
   </TableHeader>
+  </Appear>
   <TableBody>
+  <Appear>
     <TableRow>
       <TableItem textAlign="right">Behavior CPU</TableItem>
       <TableItem textFont="secondary">$35</TableItem>
       <TableItem textFont="secondary">$745</TableItem>
       <TableItem textFont="secondary">$284</TableItem>
     </TableRow>
+    </Appear>
+    <Appear>
     <TableRow>
       <TableItem textAlign="right">Nosepoke (x3)</TableItem>
       <TableItem textFont="secondary">$216</TableItem>
       <TableItem textFont="secondary" >$735</TableItem>
       <TableItem textFont="secondary">$579</TableItem>
     </TableRow>
+    </Appear>
+    <Appear>
     <ULRow>
       <TableItem textAlign="right">Total for One</TableItem>
       <TableItem textFont="secondary" textColor="#40d375">$251</TableItem>
       <TableItem textFont="secondary" textColor="tertiary">$1480</TableItem>
       <TableItem textFont="secondary" textColor="tertiary">$920</TableItem>
     </ULRow>
+    </Appear>
     <Appear>
     <TableRow>
       <TableItem textAlign="right">Five Systems</TableItem>
