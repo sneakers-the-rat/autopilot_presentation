@@ -7,6 +7,8 @@ import PropTypes from 'prop-types';
 import * as filters from './filters';
 import styles from './tb_styles'
 
+const JsonTable = require('ts-react-json-table');
+
 import {CodePane} from 'spectacle';
 
 import styled from '@emotion/styled';
@@ -46,11 +48,17 @@ const data = [
         toggled:true,
         children: [
         {name: "S00_free_water",
-        children: {name:'trial_data'}},
+        children: {name:'trial_data',
+        table: true,
+        content: [{"response":"R","target":"L","trial_num":0,"correct":0,"freq":4000},{"response":"L","target":"R","trial_num":1,"correct":0,"freq":8000},{"response":"L","target":"L","trial_num":2,"correct":1,"freq":4000},{"response":"R","target":"L","trial_num":3,"correct":0,"freq":4000},{"response":"R","target":"R","trial_num":4,"correct":1,"freq":8000},{"response":"R","target":"R","trial_num":5,"correct":1,"freq":8000},{"response":"L","target":"R","trial_num":6,"correct":0,"freq":8000},{"response":"R","target":"L","trial_num":7,"correct":0,"freq":4000},{"response":"L","target":"L","trial_num":8,"correct":1,"freq":4000},{"response":"R","target":"L","trial_num":9,"correct":0,"freq":4000},{"response":"R","target":"R","trial_num":10,"correct":1,"freq":8000},{"response":"R","target":"L","trial_num":11,"correct":0,"freq":4000},{"response":"L","target":"L","trial_num":12,"correct":1,"freq":4000},{"response":"L","target":"R","trial_num":13,"correct":0,"freq":8000},{"response":"R","target":"R","trial_num":14,"correct":1,"freq":8000}]}},
         {name: "S01_shaping_step",
-        children: {name:'trial_data'}},
+        children: {name:'trial_data',
+        table: true,
+        content: [{"response":"R","target":"L","trial_num":0,"correct":0,"freq":4000},{"response":"L","target":"R","trial_num":1,"correct":0,"freq":8000},{"response":"L","target":"L","trial_num":2,"correct":1,"freq":4000},{"response":"R","target":"L","trial_num":3,"correct":0,"freq":4000},{"response":"R","target":"R","trial_num":4,"correct":1,"freq":8000},{"response":"R","target":"R","trial_num":5,"correct":1,"freq":8000},{"response":"L","target":"R","trial_num":6,"correct":0,"freq":8000},{"response":"R","target":"L","trial_num":7,"correct":0,"freq":4000},{"response":"L","target":"L","trial_num":8,"correct":1,"freq":4000},{"response":"R","target":"L","trial_num":9,"correct":0,"freq":4000},{"response":"R","target":"R","trial_num":10,"correct":1,"freq":8000},{"response":"R","target":"L","trial_num":11,"correct":0,"freq":4000},{"response":"L","target":"L","trial_num":12,"correct":1,"freq":4000},{"response":"L","target":"R","trial_num":13,"correct":0,"freq":8000},{"response":"R","target":"R","trial_num":14,"correct":1,"freq":8000}]}},
         {name: "S02_tone_discrim",
-        children: {name:'trial_data'}}]} 
+        children: {name:'trial_data',
+        table: true,
+        content: [{"response":"R","target":"L","trial_num":0,"correct":0,"freq":4000},{"response":"L","target":"R","trial_num":1,"correct":0,"freq":8000},{"response":"L","target":"L","trial_num":2,"correct":1,"freq":4000},{"response":"R","target":"L","trial_num":3,"correct":0,"freq":4000},{"response":"R","target":"R","trial_num":4,"correct":1,"freq":8000},{"response":"R","target":"R","trial_num":5,"correct":1,"freq":8000},{"response":"L","target":"R","trial_num":6,"correct":0,"freq":8000},{"response":"R","target":"L","trial_num":7,"correct":0,"freq":4000},{"response":"L","target":"L","trial_num":8,"correct":1,"freq":4000},{"response":"R","target":"L","trial_num":9,"correct":0,"freq":4000},{"response":"R","target":"R","trial_num":10,"correct":1,"freq":8000},{"response":"R","target":"L","trial_num":11,"correct":0,"freq":4000},{"response":"L","target":"L","trial_num":12,"correct":1,"freq":4000},{"response":"L","target":"R","trial_num":13,"correct":0,"freq":8000},{"response":"R","target":"R","trial_num":14,"correct":1,"freq":8000}]}}]} 
     ]
 },
 {
@@ -60,7 +68,9 @@ const data = [
     children: [
     {
         name: 'git_hashes',
-        text: 'the version of code running the task and any local modifications are logged so the experiment can be reproduced exactly'
+        text: 'the version of code running the task and any local modifications are logged so the experiment can be reproduced exactly',
+        content: [{"diff":"--- a\/rpilot\/core\/terminal.py\n+++ b\/rpilot\/core\/terminal.py\n@@ -289,7 +289,6 @@ class Terminal(QtGui.QMainWindow):\n     # Listens & inter-object methods\n \n     def toggle_start(self, starting, pilot, mouse=None):\n-        # type: (bool, unicode, unicode) -> None\n","hash":"6d99057d","timestamp":"2019-04-12"}],
+        table: true
     },
     {
         name: 'parameter_history'
@@ -202,10 +212,72 @@ export default class DataTree extends PureComponent {
         this.setState({data: filtered});
     }
 
+    returnDiv(input){
+        return(input)
+    }
+
+    componentDidUpdate(){
+        window.Prism.highlightAll();
+    }
+
     render() {
         const {data: stateData, cursor} = this.state;
+        let node = cursor;
 
-        return (
+        const style = styles.viewer;
+        var label_text;
+        var labelnode;
+        var json;
+
+        let is_table = false;
+
+        // first try to see if it's a table
+        try{
+            is_table = node['table'];
+        } catch(err){
+            console.log(err);
+        }
+        if (is_table == true){
+            json = node['content'];
+        } else {
+          try {
+                //console.log(JSON.stringify(node['content'], null, 4));
+                json = JSON.stringify(node['content'], null, 4);
+                //const newNode = document.createElement('div');
+            } catch(err) {
+                console.log(err);
+                json = JSON.stringify(node, null, 4);
+            }
+            }  
+
+
+        if (!json) {
+            json = HELP_MSG;
+        }
+
+
+
+        try{
+            label_text = node['text'];
+        } catch(err){
+            console.log(err);
+            label_text = " ";
+        }
+
+        try{
+            labelnode = document.getElementsByClassName("treetext")[0].textContent = label_text;
+        //labelnode.textContent = "newtext";
+        //this.refs.treetext.text = "newtest";
+        } catch(err){
+            console.log(err);
+        }
+        //return {json}</DivStyled>;
+
+
+        //let NewElement = React.createElement(json);
+        console.log(json)
+        if (is_table == true)
+        {return (
                 <DivStyled>
                 <DivStyled style={styles.component}
                 className="datatree">
@@ -215,9 +287,31 @@ export default class DataTree extends PureComponent {
                 </DivStyled>
                 <DivStyled style={styles.component}
                 className="datatree">
-                <NodeViewer node={cursor}/>
+                <JsonTable rows={json}/>
                 </DivStyled>
                 </DivStyled>
                 );
+        } else {
+          return (
+                <DivStyled>
+                <DivStyled style={styles.component}
+                className="datatree">
+                <Treebeard data={stateData}
+                decorators={decorators}
+                onToggle={this.onToggle}/>
+                </DivStyled>
+                <DivStyled style={styles.component}
+                className="datatree">
+
+                <pre>
+                <code class="language-json no-whitespace-normalization">
+                {json}
+                </code>
+                </pre>
+                </DivStyled>
+                </DivStyled>
+                );  
+        }
+        
     }
 }

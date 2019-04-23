@@ -88,7 +88,9 @@ const images = {
   swarm: require('../assets/swarm.svg'),
   shared: require('../assets/shared.svg'),
   distributed: require('../assets/distributed.svg'),
-  multimodal: require('../assets/multimodal.svg')
+  multimodal: require('../assets/multimodal.svg'),
+  flexlayers: require('../assets/flexlayers.svg'),
+  pokeport: require('../assets/pokeport.png')
 };
 
 const videos = {
@@ -259,7 +261,9 @@ Software focus, hardware focus, rpilot is both
 </Slide>
 
 <Slide>
-Flexibility in 3 'layers'
+<Heading size={3} textColor="secondary" caps textAlign="left">Flexibility <span style={{'color':'#ff3030'}}>in 3 Layers</span></Heading>
+
+<Image src={images.flexlayers} width="90%" />
 </Slide>
 
 <Slide>
@@ -419,9 +423,13 @@ note:"Rounding out the task as expected, the classics never die." },
 </Slide>
 
 <Slide>
-We also provide hardware
 
-cad models
+<Heading style={{"margin-bottom":"0px"}} size={3} textColor="tertiary" caps textAlign="left">Flexibility - <span style={{'color':'#f5f5f5'}}>Hardware</span></Heading>
+<Heading size={5} textFont="secondary" textAlign="left" textColor="secondary" style={{"margin-bottom":"40px"}}>We also provide a basic set of CAD models, BOMs, and schematics</Heading>
+<span></span>
+
+<Image src={images.pokeport} width="70%"/>
+
 
 </Slide>
 
@@ -430,10 +438,10 @@ cad models
 
 <Text textSize={35} textColor="secondary" textFont="secondary" textAlign="left" style={{"margin-bottom":"2%"}}>Swarms of networked agents make different "topologies"</Text> 
 
-<Layout>
+<Layout style={{'margin-bottom':'40px'}}>
 <Appear>
 <Fill>
-<Image src={images.swarm} width="90%"></Image>
+<Image src={images.swarm} width="50%"></Image>
 <Heading size={4} textColor="tertiary">Pilot Swarm </Heading>
 <Text textColor="secondary" textFont="secondary" textAlign="center" textSize={30} style={{"width":"90%"}}>One Terminal runs tasks on many Pilots in parallel</Text>
 </Fill>
@@ -441,15 +449,16 @@ cad models
 
 <Appear>
 <Fill>
-<Image src={images.shared} width="90%"></Image>
+<Image src={images.shared} width="50%"></Image>
 <Heading size={4} textColor="tertiary">Shared Task</Heading>
 <Text textColor="secondary" textFont="secondary" textAlign="center" textSize={30} style={{"width":"90%"}}>Subcomponents of a task are split to several specific Agents</Text>
 </Fill>
 </Appear>
-
+</Layout>
+<Layout>
 <Appear>
 <Fill>
-<Image src={images.distributed} width="90%"></Image>
+<Image src={images.distributed} width="50%"></Image>
 <Heading size={4} textColor="tertiary">Distributed Task</Heading>
 <Text textColor="secondary" textFont="secondary" textAlign="center" textSize={30} style={{"width":"90%"}}>Pilots wirelessly coordinate a task in a large/naturalistic environment</Text>
 </Fill>
@@ -457,7 +466,7 @@ cad models
 
 <Appear>
 <Fill>
-<Image src={images.multimodal} width="90%"></Image>
+<Image src={images.multimodal} width="50%"></Image>
 <Heading size={4} textColor="tertiary">Multimodal Task</Heading>
 <Text textColor="secondary" textFont="secondary" textAlign="center" textSize={30} style={{"width":"90%"}}>Combining multiple agent types across multiple experiments and home-cage monitoring</Text>
 </Fill>
@@ -567,22 +576,34 @@ cad models
 </Slide>
 
 <Slide>
-Demos
+<Heading>Demos</Heading>
 
-* 2afc with sound
-* go, no go with visual stim and running wheel
+<List textAlign="center">
+<ListItem>Auditory 2AFC</ListItem>
+<ListItem>Visual go/no-go with 2 pis</ListItem>
+</List>
 
 </Slide>
 
 <Slide>
 <Heading> Limitations</Heading>
 <List>
-<ListItem>Immature Codebase - but hey so is everyone else's</ListItem>
+<ListItem>Immature Codebase, particularly agent framework</ListItem>
+<ListItem>Raspberry Pis aren't magic</ListItem>
+<ListItem>More 'hands on' than GUI-only systems (eg. labview)</ListItem>
 </List>
 </Slide>
 
 <Slide>
-the future - task library
+<Heading>The Future</Heading>
+
+<List>
+<ListItem>A Library of Tasks & Hardware</ListItem>
+<ListItem>More Agents - Homecage & <Link textColor="#7070ff" href='https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/'>Compute</Link></ListItem>
+<ListItem>Lower latency - Cython & DMA triggers</ListItem>
+<ListItem>More robust Networking architecture w/ routing tables</ListItem>
+<ListItem>Standardized data structure using Neurodata Without Borders</ListItem>
+</List>
 </Slide>
 
 </Deck>

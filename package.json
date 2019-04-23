@@ -25,6 +25,7 @@
     "react": "^16.5.2",
     "react-3d-model-viewer": "^1.0.2",
     "react-dom": "^16.5.2",
+    "react-json-table": "^0.1.1",
     "react-treebeard": "^3.2.0",
     "redux": "^4.0.1",
     "spectacle": "^5.5.0",
@@ -32,6 +33,7 @@
     "spectacle-renderer": "^0.0.3",
     "stl-viewer": "^0.11.0",
     "svg-inline-loader": "^0.8.0",
+    "ts-react-json-table": "^0.1.1",
     "video-react": "^0.13.6",
     "webpack-bundle-analyzer": "^3.3.2"
   },

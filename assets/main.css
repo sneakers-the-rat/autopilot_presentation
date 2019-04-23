@@ -49,10 +49,48 @@
     font-family: "Anonymous Pro";
 }
 
+.datatree pre {
+    background-color: #282C34;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+            padding: 10px;
+            min-height: 250px;
+    
+
+}
+
+.datatree pre span {
+    line-height: 1px !important;
+}
+
+.datatree pre>code {
+    font-size: 12pt;
+    line-height: 1.2 !important;
+    display: block;
+    
+}
+
 /* viewer */
 .datatree {
     font-family: "Anonymous Pro";
     font-size: 20pt;
+}
+
+.datatree table {
+        background-color: #282C34;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+            padding: 10px;
+            min-height: 250px;
+}
+
+.datatree table {
+    font-size: 12pt;
+    line-height: 1.2 !important;
+    display: block;
+    
 }
 
 /* styling tables */
