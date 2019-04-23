@@ -18,7 +18,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "docs"),
     filename: "bundle.js",
-    publicPath: ''
+    publicPath: '/docs/'
   },
 
   plugins: [
@@ -74,8 +74,7 @@ module.exports = {
             loader: "url-loader",
 
             options: {
-              limit: 1000,
-              name: "[hash].[ext]"
+              limit: 1000
             }
           }
         ],
