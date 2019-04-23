@@ -90,7 +90,8 @@ const images = {
   distributed: require('../assets/distributed.svg'),
   multimodal: require('../assets/multimodal.svg'),
   flexlayers: require('../assets/flexlayers.svg'),
-  pokeport: require('../assets/pokeport.png')
+  pokeport: require('../assets/pokeport.png'),
+  ourswarm: require('../assets/ourswarm.jpg')
 };
 
 const videos = {
@@ -292,12 +293,13 @@ note:"Stimulus presentation logic (sequence, synthesis, etc.) and reward deliver
 { loc: [43,47], title: "No Finite-State Limitations",
 note:"Trial-based tasks can have any transition logic, this is the simplest example where we just cycle through two stages infinitely" },
 { loc: [48,62], title: "Task stages are methods!"},
-{ loc: [52,60], title: "Triggers are precomputed",
+{ loc: [52,58], title: "Triggers are precomputed",
 note:"When an input is triggered, each event is called in sequence -- here we set triggers for the 'target' and 'wrong' inputs" },
 { loc: [59,60], title: "Everything is networked",
 note:"Communication between program modules, raspberry pis, and computers is trivial -- here DATA is sent back to our parent computer." },
+{ loc: [61,62], title: "Stimuli are Objects!", note:"Stimuli are easy to use, with a straightforward object syntax."},
 { loc: [63,70],
-note:"Rounding out the task as expected, the classics never die." },
+note:"Rounding out the task as expected,the response is reported back to the host Terminal." },
 
 
 ]}/>
@@ -470,6 +472,11 @@ note:"Rounding out the task as expected, the classics never die." },
 </Slide>
 
 <Slide>
+<Heading size={3} textColor="tertiary">Our Behavior Swarm - <span style={{"color":"#f5f5f5"}}>10 mice in parallel</span></Heading>
+<Image src={images.ourswarm} width="75%"/>
+</Slide>
+
+<Slide>
 <Text textSize={35} textColor="tertiary" textFont="secondary" textAlign="center" style={{"margin-bottom":"2%"}}>(Our swarm training 10 mice in parallel)</Text> 
 
   <div style={{'margin':'auto',
@@ -502,7 +509,7 @@ note:"Rounding out the task as expected, the classics never die." },
 </List>
 
 <Table>
-<Appear>
+
   <TableHeader>
     <TableRow textColor="tertiary">
       <TableHeaderItem />
@@ -511,7 +518,6 @@ note:"Rounding out the task as expected, the classics never die." },
       <TableHeaderItem>pyControl</TableHeaderItem>
     </TableRow>
   </TableHeader>
-  </Appear>
   <TableBody>
   <Appear>
     <TableRow>
@@ -584,6 +590,23 @@ note:"Rounding out the task as expected, the classics never die." },
 <ListItem>Visual go/no-go with 2 pis</ListItem>
 </List>
 
+</Slide>
+
+<Slide>
+<Heading>Summary of RPilot Features</Heading>
+<List>
+<Appear><ListItem>The <span style={{'color':'#ff3030'}}>fastest</span> system</ListItem></Appear>
+<Appear><ListItem>The <span style={{'color':'#ff3030'}}>least expensive</span> system</ListItem></Appear>
+<Appear><ListItem>The <span style={{'color':'#ff3030'}}>most flexible</span> tasks and protocols</ListItem></Appear>
+<Appear><ListItem><span style={{'color':'#ff3030'}}>Distributes</span> tasks across multiple computers</ListItem></Appear>
+<Appear><ListItem><span style={{'color':'#ff3030'}}>Documented</span> to the bone</ListItem></Appear>
+<Appear><ListItem><span style={{'color':'#ff3030'}}>Reproducible</span> Experiments</ListItem></Appear>
+<Appear><ListItem>Uses an unprecedentedly <span style={{'color':'#ff3030'}}>well-supported</span> hardware platform</ListItem></Appear>
+<Appear><ListItem>Natively supports all common <span style={{'color':'#ff3030'}}>hardware I/O</span> standards</ListItem></Appear>
+<Appear><ListItem>Comes with a basic set of <span style={{'color':'#ff3030'}}>easily assembed hardware</span> schematics</ListItem></Appear>
+<Appear><ListItem><span style={{'color':'#ff3030'}}>Anti-Proprietary</span> -- no costly modules!</ListItem></Appear>
+<Appear><ListItem>Becomes <span style={{'color':'#ff3030'}}>more powerful</span> as you use it</ListItem></Appear>
+</List>
 </Slide>
 
 <Slide>
