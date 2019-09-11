@@ -1,12 +1,12 @@
-# INTRODUCING RPILOT
+# INTRODUCING AUTOPILOT
 
-This repository's presentation is hosted at [https://jon-e.net/rpilot_presentation](https://jon-e.net/rpilot_presentation)
+This repository's presentation is hosted at [https://auto-pi-lot.com/presentation](https://auto-pi-lot.com/presentation)
 
-An overview of [RPilot](https://git.io/rpilot), a system to distribute behavioral neuroscience experiments across one or many Raspberry Pis.
+An overview of [Autopilot](https://git.io/auto-pi-lot), a system to distribute behavioral neuroscience experiments across one or many Raspberry Pis.
 
 Still in pre-release, release anticipated spring 2019.
 
-Docs are at [https://rpilot.readthedocs.org](https://rpilot.readthedocs.org) though they too are currently unfinished.
+Docs are at [https://docs.auto-pi-lot.com/](https://docs.auto-pi-lot.com/) though they too are currently unfinished.
 
 
 Built with [Spectacle.js](https://formidable.com/open-source/spectacle/) [(github)](https://github.com/FormidableLabs/spectacle)

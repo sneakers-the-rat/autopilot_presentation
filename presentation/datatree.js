@@ -73,7 +73,8 @@ const data = [
         table: true
     },
     {
-        name: 'parameter_history'
+        name: 'parameter_history',
+        text: 'any parameter changes are automatically logged, no need to keep a cryptic lab notebook to remember what you tried'
     },
     {
         name: 'past_protocols'

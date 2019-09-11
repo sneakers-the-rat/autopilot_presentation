@@ -80,7 +80,7 @@ const images = {
   concurrency_1: require('../assets/concurrency_1.svg'),
   concurrency_2: require('../assets/concurrency_2.svg'),
   concurrency_3: require('../assets/concurrency_3.svg'),
-  lags: require('../assets/lags.svg'),
+  lags: require('../assets/lags_white.svg'),
   protocol: require('../assets/protocol.svg'),
   terminal: require('../assets/terminal.svg'),
   pilot: require('../assets/pilot.svg'),
@@ -133,7 +133,7 @@ contentHeight="95%"
 >
 <Slide bgColor="primary">
 <Heading size={1} caps lineHeight={1} textColor="secondary">
-RPilot
+Autopilot
 </Heading>
 <Text margin="10px 0 0" textColor="tertiary" textFont="secondary">
 Distributed Behavioral Experiments
@@ -145,17 +145,17 @@ Distributed Behavioral Experiments
 "left": "0",
 "right": "0",
 "text-align":"center"}}>
-<Link href="https://git.io/rpilot" 
+<Link href="https://git.io/auto-pi-lot" 
 textColor="quaternary"
 style={{"text-decoration":"underline"}}>github
 </Link> - <Link 
-href="https://rpilot.readthedocs.org/" 
+href="https://docs.auto-pi-lot.com/" 
 textColor="quaternary"
 style={{"text-decoration":"underline"}}>docs
 </Link> - <Link 
-href="https://rpilot.net" 
+href="https://auto-pi-lot.com" 
 textColor="quaternary"
-style={{"text-decoration":"underline"}}>site (soon...)
+style={{"text-decoration":"underline"}}>site
 </Link>
 </Text>
 </Slide>
@@ -192,17 +192,17 @@ But existing systems are...
 </Slide>
 
 <Slide bgColor="primary" transition={['none']}>
-<Heading textColor="secondary" size={1} textAlign="left">Introducing RPilot</Heading>
+<Heading textColor="secondary" size={1} textAlign="left">Introducing Autopilot</Heading>
 <Heading textColor="tertiary" size={5} textAlign="left">A Python framework for behavioral neuroscience</Heading>
 <Image src={images.overview_3} width={800} height={575}/>
 </Slide>
 
 <Slide>
-<Heading size={1} textColor="secondary" caps textAlign="center">Design Priorities</Heading>
+<Heading size={1} textColor="secondary" caps textAlign="center">Design Principles</Heading>
 <List textColor="tertiary">
-<ListItem textSize={60}>Efficiency - <span style={{'color':'#f5f5f5'}}>RPilot is fast</span></ListItem>
-<ListItem textSize={60}>Flexibility - <span style={{'color':'#f5f5f5'}}>RPilot can do anything</span></ListItem>
-<ListItem textSize={60}>Reproducibility - <span style={{'color':'#f5f5f5'}}>RPilot makes good science easy</span></ListItem>
+<ListItem textSize={60}>Efficiency - <span style={{'color':'#f5f5f5'}}>Autopilot is fast</span></ListItem>
+<ListItem textSize={60}>Flexibility - <span style={{'color':'#f5f5f5'}}>Autopilot can do anything</span></ListItem>
+<ListItem textSize={60}>Reproducibility - <span style={{'color':'#f5f5f5'}}>Autopilot makes good science easy</span></ListItem>
 </List>
 
 </Slide>
@@ -285,9 +285,9 @@ note: "Define details of task operation."},
 { loc: [16, 19], title: "#2 - Data",
 note: "What will be returned from each trial" },
 { loc: [20, 26], title: "#3 - Plotting",
-note: "Map Data to graphical elements" },
+note: "Map Data to graphical elements -- customize plots to fit your task!" },
 { loc: [26, 35], title: "#4 - Hardware",
-note:"Abstract mappings from names to types, configuration is systemwide" },
+note:"Abstract mappings from names to types, configuration is systemwide -- your tasks are hardware portable!" },
 { loc: [40, 42], title: "Managers",
 note:"Stimulus presentation logic (sequence, synthesis, etc.) and reward delivery are handled by independently parameterized \"Managers,\" which can be arbitrarily customized without changing the Task logic." },
 { loc: [43,47], title: "No Finite-State Limitations",
@@ -364,7 +364,7 @@ note:"Rounding out the task as expected,the response is reported back to the hos
   <TableHeader>
     <TableRow textColor="tertiary">
       <TableHeaderItem />
-      <TableHeaderItem>Raspberry Pi</TableHeaderItem>
+      <TableHeaderItem>Raspberry Pi 4</TableHeaderItem>
       <TableHeaderItem>BPod (Teensy 3.6)</TableHeaderItem>
       <TableHeaderItem>pyControl (pyboard)</TableHeaderItem>
     </TableRow>
@@ -372,13 +372,13 @@ note:"Rounding out the task as expected,the response is reported back to the hos
   <TableBody>
     <TableRow>
       <TableItem textAlign="right">CPU</TableItem>
-      <TableItem textFont="secondary" textColor="#40d375">1.4Ghz x4</TableItem>
+      <TableItem textFont="secondary" textColor="#40d375">1.5Ghz x4</TableItem>
       <TableItem textFont="secondary">180MHz x1</TableItem>
       <TableItem textFont="secondary">168MHz x1</TableItem>
     </TableRow>
     <TableRow>
       <TableItem textAlign="right">Video Card</TableItem>
-      <TableItem textFont="secondary" textColor="#40d375">HDMI Out</TableItem>
+      <TableItem textFont="secondary" textColor="#40d375">2x HDMI</TableItem>
       <TableItem textFont="secondary" textColor="tertiary">X</TableItem>
       <TableItem textFont="secondary" textColor="tertiary">X</TableItem>
     </TableRow>
@@ -390,9 +390,9 @@ note:"Rounding out the task as expected,the response is reported back to the hos
     </TableRow>
     <TableRow>
       <TableItem textAlign="right">USB Ports</TableItem>
-      <TableItem textFont="secondary" textColor="#40d375">4</TableItem>
-      <TableItem textFont="secondary">2</TableItem>
-      <TableItem textFont="secondary">1</TableItem>
+      <TableItem textFont="secondary" textColor="#40d375">2x USB 3, 2x USB 2</TableItem>
+      <TableItem textFont="secondary">2x USB 2</TableItem>
+      <TableItem textFont="secondary">1x USB 2</TableItem>
     </TableRow>
     <TableRow>
       <TableItem textAlign="right">Networking</TableItem>
@@ -505,7 +505,7 @@ note:"Rounding out the task as expected,the response is reported back to the hos
 <ListItem textFont="secondary" textSize={30}>Complex tasks have long training times</ListItem>
 <ListItem textFont="secondary" textSize={30}>Behavioral instrumentation can be the bottleneck</ListItem>
 <ListItem textFont="secondary" textSize={30}>Low-n experiments are bad for statistical inference</ListItem>
-<ListItem textFont="secondary" textSize={30} textColor="tertiary">RPilot is an order of magnitude less expensive than other systems</ListItem>
+<ListItem textFont="secondary" textSize={30} textColor="tertiary">Autopilot is an order of magnitude less expensive than other systems</ListItem>
 </List>
 
 <Table>
@@ -513,7 +513,7 @@ note:"Rounding out the task as expected,the response is reported back to the hos
   <TableHeader>
     <TableRow textColor="tertiary">
       <TableHeaderItem />
-      <TableHeaderItem>RPilot</TableHeaderItem>
+      <TableHeaderItem>Autopilot</TableHeaderItem>
       <TableHeaderItem>BPod</TableHeaderItem>
       <TableHeaderItem>pyControl</TableHeaderItem>
     </TableRow>
@@ -584,7 +584,7 @@ note:"Rounding out the task as expected,the response is reported back to the hos
 
 <Slide>
 <Heading>Demos</Heading>
-
+<Heading size={3} textColor='secondary'>Sorry, live presentation only!</Heading>
 <List textAlign="center">
 <ListItem>Auditory 2AFC</ListItem>
 <ListItem>Visual go/no-go with 2 pis</ListItem>
@@ -593,7 +593,7 @@ note:"Rounding out the task as expected,the response is reported back to the hos
 </Slide>
 
 <Slide>
-<Heading>Summary of RPilot Features</Heading>
+<Heading>Summarizing Autopilot</Heading>
 <List>
 <Appear><ListItem>The <span style={{'color':'#ff3030'}}>fastest</span> system</ListItem></Appear>
 <Appear><ListItem>The <span style={{'color':'#ff3030'}}>least expensive</span> system</ListItem></Appear>
